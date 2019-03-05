@@ -78,5 +78,13 @@ public class MainActivity extends AppCompatActivity {
             }
         };
     }
-    
+
+    private void resumeGame(long milliseconds) {
+        // Create a new timer for the correct length and start it.
+        gameIsInprogress = true;
+        timerMilliseconds = milliseconds;
+        createTimer(milliseconds);
+        countDownTimer.start();
+    }
+
 }
