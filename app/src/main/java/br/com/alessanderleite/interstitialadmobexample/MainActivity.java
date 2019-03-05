@@ -38,6 +38,6 @@ public class MainActivity extends AppCompatActivity {
                 startGame();
             }
         });
-        
+
     }
 }
