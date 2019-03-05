@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 
@@ -77,6 +78,16 @@ public class MainActivity extends AppCompatActivity {
                 retryButton.setVisibility(View.VISIBLE);
             }
         };
+    }
+
+    private void startGame() {
+        // Request a new ad if one isn't already loaded, hide the button, and kick off the timer.
+        if (!interstitialAd.isLoading() && !interstitialAd.isLoaded()) {
+            AdRequest adRequest = new AdRequest.Builder().build();
+            interstitialAd.loadAd(adRequest);
+        }
+        retryButton.setVisibility(View.VISIBLE);
+        resumeGame(GAME_LENGTH_MILLISECONDS);
     }
 
     private void resumeGame(long milliseconds) {
