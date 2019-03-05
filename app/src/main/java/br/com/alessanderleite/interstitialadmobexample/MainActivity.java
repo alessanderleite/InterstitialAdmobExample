@@ -81,6 +81,23 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
+    @Override
+    public void onResume() {
+        //Start or resume the game.
+        super.onResume();
+
+        if (gameIsInprogress) {
+            resumeGame(timerMilliseconds);
+        }
+    }
+
+    @Override
+    public void onPause() {
+        // Cancel the timer if the game is paused.
+        countDownTimer.cancel();
+        super.onPause();
+    }
+
     private void showInterstitial() {
         // Show the ad if it's ready. Otherwise toast and restart the game.
         if (interstitialAd != null && interstitialAd.isLoaded()) {
